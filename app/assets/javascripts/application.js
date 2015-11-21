@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(
+        function(position) {
+            console.log(position);
+        },
+        locationError,
+        {enableHighAccuracy: true}
+    );
+} else {
+    locationError();
+}
+
+function locationError() {
+    alert('Sorry, cannot get your location');
+}
