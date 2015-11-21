@@ -18,7 +18,9 @@
 if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(
         function(position) {
-            console.log(position);
+            console.log(position.coords.latitude);
+            console.log(position.coords.longitude);
+            console.log(position.coords.accuracy);
         },
         locationError,
         {enableHighAccuracy: true}
