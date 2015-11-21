@@ -14,12 +14,12 @@
 #
 development:
   adapter:  postgresql
-  host:     localhost
+  host:     ec2-54-83-202-64.compute-1.amazonaws.com
   encoding: unicode
-  database: myapp_development
+  database: d9klfmid11f036
   pool:     5
-  username: myapp
-  password:
+  username: viidfkhywsqyxw
+  password: 1GOCgkYJ5yuivyL_oukiy3NP9a
   template: template0
 
   # Connect on a TCP socket. Omitted by default since the client uses a
