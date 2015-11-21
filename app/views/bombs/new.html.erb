@@ -1,0 +1,8 @@
+<%= simple_form_for @bomb do |f| %>
+  <p><button id="photobombed">I Just Photobombed</button></p>
+  <p id="loading-location" style="display:none;">Getting location...</p>
+  <p id="error-location" style="display:none;">Could not get location</p>
+  <%= f.input :latitude %>
+  <%= f.input :longitude %>
+  <%= f.input :accuracy %>
+<% end %>

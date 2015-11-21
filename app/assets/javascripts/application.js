@@ -15,20 +15,35 @@
 //= require turbolinks
 //= require_tree .
 
-if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition(
-        function(position) {
-            alert(position.coords.latitude);
-            alert(position.coords.longitude);
-            alert(position.coords.accuracy);
-        },
-        locationError,
-        {enableHighAccuracy: true}
-    );
-} else {
-    locationError();
-}
+$(function () {
+    var loadingIndicator = $('#loading-location');
+    var errorIndicator = $('#error-location');
+    var latitude = $('#bomb_latitude');
+    var longitude = $('#bomb_longitude');
+    var accuracy = $('#bomb_accuracy');
+    $('#photobombed').click(function (e) {
+        e.preventDefault();
+        loadingIndicator.show();
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    loadingIndicator.hide();
+                    latitude.val(position.coords.latitude);
+                    longitude.val(position.coords.longitude);
+                    accuracy.val(position.coords.accuracy);
+                },
+                locationError,
+                {
+                    enableHighAccuracy: true,
+                    timeout: 15000
+                }
+            );
+        } else {
+            locationError();
+        }
+    });
 
-function locationError() {
-    alert('Sorry, cannot get your location');
-}
+    function locationError() {
+        errorIndicator.show();
+    }
+});
