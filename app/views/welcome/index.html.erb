@@ -30,7 +30,7 @@
 	    </div>
 	  </div>
 	<% else %>
-
+	<br>
 	<h1 class="h4">Your Photobombs</h1>               
 	<% @matches.each do |match| %>
 		<%= render partial: 'partials/photo', locals: { match: match } %>
