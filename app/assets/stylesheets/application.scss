@@ -1,0 +1,92 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ $brand-primary:         #45ACD7 !default; // #337ab7
+ $brand-success:         #56A635 !default;
+ $brand-info:            lighten($brand-primary, 10%) !default;
+ $brand-warning:         #E9C517 !default;
+ $brand-danger:          #F43A47 !default;
+
+ $font-family-sans-serif:  "Lato", Helvetica, Arial, sans-serif !default;
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ body {
+ 	padding-top: 75px;
+ }
+
+ .form-horizontal .form-group {
+ 	margin-left: 0px;
+ 	margin-right: 0;
+ }
+
+ .btn-cta {
+ 	padding: 20px 16px;
+ 	margin-left: 15px;
+ 	width: calc(100% - 30px);
+ }
+
+ .photo-wrapper {
+ 	margin-bottom: 20px;
+ }
+
+ .navbar-btn {
+ 	margin-right: 15px;
+ }
+
+ .zero-results {
+ 	margin-top: 50px;
+ }
+
+ .zero-results-icon {
+ 	width: 100px;
+ 	height: 100px;
+ 	background-color: $gray-lighter;
+ 	border-radius: 50%;
+ 	line-height: 3;
+ 	color: $gray;
+ 	font-size: 36px;
+
+ 	.glyphicon {
+ 		left: 32px;
+ 	}
+ }
+
+ .navbar-toggle {
+ 	padding: 6px 12px;
+ 	
+ 	.glyphicon {
+ 		top: 4px;
+ 	}
+ }
+
+ .badge {
+ 	background-color: $brand-danger;
+ }
+
+ // .navbar-brand {
+ // 	font-weight: 900;
+ // }
+
+ // .navbar-default {
+ // 	background-color: $brand-success;
+ // 	.navbar-brand {
+ // 		color: white;
+ // 	}
+ // }
+
+
