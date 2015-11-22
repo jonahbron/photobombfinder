@@ -12,7 +12,7 @@ class PhotosController < InheritedResources::Base
     @photo.latitude = exifr.gps.latitude
     @photo.longitude = exifr.gps.longitude
     timezone = Timezone::Zone.new latlon: [@photo.latitude, @photo.longitude]
-    @photo.taken_at = exifr.date_time_digitized.to_datetime + (timezone.utc_offset * 2).seconds
+    @photo.taken_at = exifr.date_time_digitized.to_datetime - timezone.utc_offset.seconds
     @photo.save!
     Bomb.where(
       'latitude > ? AND latitude < ? AND longitude > ? AND longitude < ? AND taken_at > ? AND taken_at < ?',
