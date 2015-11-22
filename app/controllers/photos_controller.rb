@@ -1,6 +1,6 @@
 require 'exifr'
 
-MARGIN = ENV['LOCATION_THRESHOLD']
+MARGIN = ENV['LOCATION_THRESHOLD'].to_f
 
 class PhotosController < InheritedResources::Base
 
