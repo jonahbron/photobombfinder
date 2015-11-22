@@ -76,7 +76,8 @@ $(function () {
             photoUploadBtn.removeClass('btn-primary').addClass('btn-default');
             $('.upload-photo').removeClass('hidden');
         }
-    });   
+    });
+    $('.alert-timeout').delay(3000).fadeOut();
 });
 
 
