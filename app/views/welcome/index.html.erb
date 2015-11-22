@@ -1,35 +1,44 @@
-	<%= simple_form_for Bomb.new do |f| %>
-	  <button id="photobombed" class="btn btn-lg btn-primary btn-block btn-cta">I Just Photobombed</button>
-	  <p id="loading-location" style="display:none;" class="text-center text-success">
-	  	<br>
-	  	<strong>Getting location...</strong>
-	  </p>
+  <%= simple_form_for Bomb.new do |f| %>
+    <button id="photobombed" class="btn btn-lg btn-primary btn-block btn-cta">I Just Photobombed</button>
+    <p id="loading-location" style="display:none;" class="text-center text-success">
+      <br>
+      <strong>Getting location...</strong>
+    </p>
 
-	 	<%= f.hidden_field :latitude %>
-	  <%= f.hidden_field :longitude %>
-	  <%= f.hidden_field :accuracy %>
-
-	  <div class="alert alert-success alert-dismissible" role="alert" style="margin-top: 15px">
-	  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	  	Great, we'll let you know when you've found your photobomb.
-	  </div>
-	  <div id="error-location" class="alert alert-danger alert-dismissible hidden" role="alert" style="margin-top: 15px">
-	  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	  	Could not get location
-	  </div>
-	<% end %>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
+    <%= f.hidden_field :accuracy %>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-success alert-dismissible" role="alert" style="margin-top: 15px">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= value %>
+      </div>
+    <% end %> 
+    <div id="error-location" class="alert alert-danger alert-dismissible" role="alert" style="margin-top: 15px">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Could not get location
+    </div>
+  <% end %>
 
 <% if @matches.size == 0 %>
-	<div class="zero-results">
-		<p class="lead text-center">No photobombs yet!</p>
-		<div class="zero-results-icon center-block">
-			<span class="glyphicon glyphicon-picture"></span>	
-		</div>
-	</div>
+  <div class="zero-results">
+    <p class="lead text-center">No photobombs yet!</p>
+    <div class="zero-results-icon center-block">
+      <span class="glyphicon glyphicon-picture"></span> 
+    </div>
+  </div>
 <% else %>
+<<<<<<< HEAD
 	<h1 class="h4">Your Photobombs</h1>               
 	<% @matches.each do |match| %>
 		<%= render partial: 'partials/photo', locals: { match: match } %>
 	<% end %>
+=======
+  <h1 class="h4">Recently Found Photobombs</h1>               
+
+  <% @matches.each do |match| %>
+    <%= render partial: 'partials/photo', locals: { match: match } %>
+  <% end %>
+>>>>>>> e9a5b0f554d5c46ed2fe7c91f33146df37d5b645
 <% end %>
 
