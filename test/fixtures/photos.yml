@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  photo: MyString
+  name: MyString
+  latitude: 9.99
+  longitude: 9.99
+  accuracy: 1
+  taken_at: 2015-11-21 19:40:28
+
+two:
+  photo: MyString
+  name: MyString
+  latitude: 9.99
+  longitude: 9.99
+  accuracy: 1
+  taken_at: 2015-11-21 19:40:28
