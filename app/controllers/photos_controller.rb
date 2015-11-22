@@ -1,6 +1,6 @@
 require 'exifr'
 
-MARGIN = 0.002700003
+MARGIN = 0.003
 
 class PhotosController < InheritedResources::Base
 
