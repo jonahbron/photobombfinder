@@ -13,7 +13,7 @@ class BombsController < InheritedResources::Base
   private
 
     def bomb_params
-      params.require(:bomb).permit(:latitude, :longitude, :accuracy)
+      params.require(:bomb).permit(:latitude, :longitude, :accuracy, :taken_at)
     end
 
 end
