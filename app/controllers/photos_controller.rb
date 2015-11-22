@@ -1,24 +1,29 @@
 require 'exifr'
 
-MARGIN = 0.002700003
+MARGIN = ENV['LOCATION_THRESHOLD'].to_f
 
 class PhotosController < InheritedResources::Base
 
   actions :new, :create, :show
 
   def create
-    @photo = Photo.new(photo_params)
-    @photo.save!
     exifr = EXIFR::JPEG.new(photo_params['photo'].tempfile.path)
-    taken_at = exifr.date_time_digitized.to_datetime
+    @photo = Photo.new(photo_params)
+    @photo.taken_at = exifr.date_time_digitized.to_datetime.utc
+    puts exifr.date_time_digitized
+    puts exifr.date_time_digitized.to_datetime
+    puts @photo.taken_at
+    @photo.latitude = exifr.gps.latitude
+    @photo.longitude = exifr.gps.longitude
+    @photo.save!
     Bomb.where(
       'latitude > ? AND latitude < ? AND longitude > ? AND longitude < ? AND taken_at > ? AND taken_at < ?',
-      exifr.gps.latitude - MARGIN,
-      exifr.gps.latitude + MARGIN,
-      exifr.gps.longitude - MARGIN,
-      exifr.gps.longitude + MARGIN,
-      taken_at - 5.minutes,
-      taken_at + 5.minutes
+      @photo.latitude - MARGIN,
+      @photo.latitude + MARGIN,
+      @photo.longitude - MARGIN,
+      @photo.longitude + MARGIN,
+      @photo.taken_at - 5.minutes,
+      @photo.taken_at + 5.minutes
     ).each do |bomb|
       Match.create bomb_id: bomb.id, photo_id: @photo.id
     end
