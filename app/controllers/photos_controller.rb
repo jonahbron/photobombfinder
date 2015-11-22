@@ -1,6 +1,6 @@
 class PhotosController < InheritedResources::Base
 
-  actions :new, :create
+  actions :new, :create, :show
 
   private
 
