@@ -51,4 +51,17 @@ $(function () {
     function locationError() {
         errorIndicator.show();
     }
+
+    $('.delete-this-photo').click(function(e) {
+        e.preventDefault();
+        var photo = $(this).parents('.photo-wrapper');
+        var msg =
+            '<div class="alert alert-success alert-dismissible">' +
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                '<strong>Photo removed from feed</strong><br>' +
+                'Dang! We\'ll try harder next time' +
+            '</div>';
+        $(msg).insertBefore(photo).fadeIn().delay(2000).fadeOut();
+        photo.fadeOut();
+    });
 });
