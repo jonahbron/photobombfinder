@@ -20,7 +20,7 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<%- if user_signed_in? %>
-				<% if controller_name === 'welcome' %>
+				<% if @new_matches %>
 				<button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
@@ -28,7 +28,8 @@
 				</button>
 				<% end %>
 				<% end %>
-				<%= link_to root_url, class: 'navbar-brand' do %><%= image_tag("photobombfinder", width: "194") %><% end %>
+
+				<%= link_to root_url, class: 'navbar-brand' do %><%= image_tag("photobombfinder.png", width: "194") %><% end %>
 
 				<%- if !user_signed_in? && controller_name != 'registrations' && controller_name != 'photos' %>
 					<%= link_to "Sign up", new_user_registration_path, class: "btn btn-danger navbar-btn pull-right" %>
@@ -43,7 +44,7 @@
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<% if controller_name === 'welcome' %>
+				<% if @new_matches %>
 				<ul class="nav navbar-nav hidden-md hidden-lg">
 					<% if @new_matches.size === 0 %>
 						<li><a href="#">No new notifications</a></li>
