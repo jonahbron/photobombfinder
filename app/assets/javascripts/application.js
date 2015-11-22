@@ -64,4 +64,20 @@ $(function () {
         $(msg).insertBefore(photo).fadeIn().delay(2000).fadeOut();
         photo.fadeOut();
     });
+
+    $('input[type=file]').bootstrapFileInput();
+    $('.file-inputs').bootstrapFileInput();
+
+    var photoUploadBtn = $('.file-input-wrapper');
+    photoUploadBtn.removeClass('btn-default').addClass('btn-primary');
+
+    $('input[type=file]').change(function(){
+        var hasNoFiles = this.files.length > 0;
+        if (this.files.length > 0 ) {
+            photoUploadBtn.removeClass('btn-primary').addClass('btn-default');
+            $('.upload-photo').removeClass('hidden');
+        }
+    });   
 });
+
+

@@ -1,4 +1,9 @@
+<div class="text-center">
+	<h1>So you've been photobombed.</h1>
+	<p class="lead">Upload the bombed photo.</p>
+</div>
+
 <%= simple_form_for Photo.new do |f| %>
-  <%= f.input :photo, as: :file %>
-  <%= f.button :submit %>
+  <%= f.input :photo, as: :file, label: false %>
+  <%= f.button :submit, "Go!", class: "hidden upload-photo" %>
 <% end %>

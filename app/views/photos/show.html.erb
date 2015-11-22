@@ -1,1 +1,5 @@
-<%= @photo.photo_url %>
+<div class="text-center">
+	<h1>Great Success!</h1>
+	<p class="lead">Your photo has been uploaded</p>
+	<%= image_tag(@photo.photo_url, class: "img-responsive") %>
+</div>
