@@ -10,6 +10,7 @@ class PhotosController < InheritedResources::Base
     exifr = EXIFR::JPEG.new(photo_params['photo'].tempfile.path)
     @photo = Photo.new(photo_params)
     @photo.taken_at = exifr.date_time_digitized.to_datetime.utc
+    puts @photo.taken_at
     @photo.latitude = exifr.gps.latitude
     @photo.longitude = exifr.gps.longitude
     @photo.save!
