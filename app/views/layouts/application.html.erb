@@ -29,7 +29,8 @@
 				<% end %>
 				<% end %>
 
-				<%= link_to root_url, class: 'navbar-brand' do %><%= image_tag("photobombfinder.png", width: "194") %><% end %>
+				<%= link_to root_url, class: 'navbar-brand visible-xs' do %><%= image_tag("photobombfinder.png", width: "100") %><% end %>
+				<%= link_to root_url, class: 'navbar-brand hidden-xs' do %><%= image_tag("photobombfinder.png", width: "200") %><% end %>
 
 				<%- if !user_signed_in? && controller_name != 'registrations' && controller_name != 'photos' %>
 					<%= link_to "Sign up", new_user_registration_path, class: "btn btn-danger navbar-btn pull-right" %>
@@ -39,13 +40,13 @@
 					<%= link_to "Log in", new_user_session_path, class: "btn btn-success navbar-btn pull-right" %>
 				<% end -%>
 
-				<%= link_to "<span class='glyphicon glyphicon-cloud-upload'></span> Upload".html_safe, new_photo_path, class: "btn btn-success navbar-btn hidden-lg hidden-md pull-right" %>
+				<%= link_to "<span class='glyphicon glyphicon-cloud-upload'></span> Upload".html_safe, new_photo_path, class: "btn btn-success navbar-btn visible-xs pull-right" %>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<% if @new_matches %>
-				<ul class="nav navbar-nav hidden-md hidden-lg">
+				<ul class="nav navbar-nav visible-xs">
 					<% if @new_matches.size === 0 %>
 						<li><a href="#">No new notifications</a></li>
 					<% end %>
@@ -54,8 +55,8 @@
 					<% end %>
 				</ul>
 				
-				<ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
-					<%= link_to "<span class='glyphicon glyphicon-cloud-upload'></span> Upload".html_safe, new_photo_path, class: "btn btn-success navbar-btn hidden-sm hidden-xs pull-right" %>
+				<ul class="nav navbar-nav navbar-right hidden-xs">
+					<%= link_to "<span class='glyphicon glyphicon-cloud-upload'></span> Upload".html_safe, new_photo_path, class: "btn btn-success navbar-btn hidden-xs pull-right" %>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
 					Notifications <span class="badge"><%= @new_matches.size %></span></a>

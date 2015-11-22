@@ -92,6 +92,14 @@
 	@extend .btn-lg;
 }
 
+@media (max-width: $screen-xs-max) { 
+	.navbar-brand > img {
+		position: relative;
+		top: 4px;
+	}
+}
+
+
 .btn-file input[type=file] {
   position: absolute;
   top: 0;
