@@ -39,13 +39,16 @@
 				<%= link_to "<span class='glyphicon glyphicon-cloud-upload'></span> Upload".html_safe, new_photo_path, class: "btn btn-success navbar-btn pull-right" %>
 			</div>
 
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="#"><span class="glyphicon glyphicon-ok-sign text-success"></span> We've found your photobomb you did 3 days ago</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-ok-sign text-success"></span> We've found your photobomb you did 5 days ago</a></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
+			<% if @new_matches %>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<% @new_matches.each do |match| %>
+							<li><a href="#"><span class="glyphicon glyphicon-ok-sign text-success"></span> We've found the photobomb you did <%= time_ago_in_words match.bomb.taken_at %> ago</a></li>
+						<% end %>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			<% end %>
 		</div><!-- /.container-fluid -->
 		<div class="progress">
 		<div class="progress-bar progress-bar-success" style="width: 25%"></div>
