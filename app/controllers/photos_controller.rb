@@ -9,6 +9,7 @@ class PhotosController < InheritedResources::Base
   def create
     exifr = EXIFR::JPEG.new(photo_params['photo'].tempfile.path)
     @photo = Photo.new(photo_params)
+    puts exifr.inspect
     @photo.taken_at = exifr.date_time_digitized.to_datetime.utc
     puts exifr.date_time_digitized
     puts exifr.date_time_digitized.to_datetime
