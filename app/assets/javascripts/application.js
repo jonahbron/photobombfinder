@@ -18,6 +18,7 @@
 $(function () {
     var loadingIndicator = $('#loading-location');
     var errorIndicator = $('#error-location');
+    var successIndicator = $('#success-location');
     var bomb_form = $('#new_bomb');
     var latitude = $('#bomb_latitude');
     var longitude = $('#bomb_longitude');
@@ -29,12 +30,20 @@ $(function () {
         if ('geolocation' in navigator) {
             navigator.geolocation.getCurrentPosition(
                 function(position) {
-                    loadingIndicator.hide();
                     latitude.val(position.coords.latitude);
                     longitude.val(position.coords.longitude);
                     accuracy.val(position.coords.accuracy);
                     taken_at.val((new Date()).toISOString());
-                    bomb_form.submit();
+
+                    $
+                        .post(bomb_form.attr('action'), bomb_form.serialize())
+                        .then(function () {
+                            loadingIndicator.hide();
+                            successIndicator.fadeIn().delay(5000).fadeOut();
+                        }, function () {
+                            loadingIndicator.hide();
+                            errorIndicator.fadeIn().delay(5000).fadeOut();
+                        });
                 },
                 locationError,
                 {
