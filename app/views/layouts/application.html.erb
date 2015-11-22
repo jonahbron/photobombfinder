@@ -1,14 +1,64 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Photobombfinder</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Photobombfinder</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.0/holder.js"></script>
+	<%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+					<span class="badge">4</span>
+				</button>
+				<a class="navbar-brand" href="#">PhotobombFinder</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+					<li><a href="#">Link</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<%= simple_form_for Bomb.new do |f| %>
+	  <button id="photobombed" class="btn btn-lg btn-primary btn-block btn-cta">I Just Photobombed</button>
+	  <p id="loading-location" style="display:none;">Getting location...</p>
+	  <p id="error-location" style="display:none;">Could not get location</p>
+	  <%= f.input :latitude %>
+	  <%= f.input :longitude %>
+	  <%= f.input :accuracy %>
+
+	  <div class="alert alert-success alert-dismissible" role="alert">
+	  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  	Great, we'll let you know when you've found your photobomb.
+	  </div>
+	<% end %>
+
+
+
+
+	<div class="container">
+		<%= yield %>	
+	</div>
 
 </body>
 </html>

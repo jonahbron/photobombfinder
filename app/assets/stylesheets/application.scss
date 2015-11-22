@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// .navbar {
+// 	margin-bottom: 0;
+// }
+
+// .btn {
+// 	border-radius: 0;
+// }
+
+.btn-cta {
+	padding: 20px 16px;
+	margin-left: 15px;
+	width: calc(100% - 30px);
+}
+
+.photo-wrapper {
+	margin-bottom: 20px;
+}
