@@ -19,7 +19,7 @@ class PhotosController < InheritedResources::Base
     ).each do |bomb|
       Match.create bomb_id: bomb.id, photo_id: @photo.id
     end
-    redirect_to root_url
+    redirect_to @photo
   end
 
   private
