@@ -1,3 +1,23 @@
+	<%= simple_form_for Bomb.new do |f| %>
+	  <button id="photobombed" class="btn btn-lg btn-primary btn-block btn-cta">I Just Photobombed</button>
+	  <p id="loading-location" style="display:none;" class="text-center text-success">
+	  	<br>
+	  	<strong>Getting location...</strong>
+	  </p>
+	 <!--  <%= f.input :latitude %>
+	  <%= f.input :longitude %>
+	  <%= f.input :accuracy %> -->
+
+	  <div class="alert alert-success alert-dismissible hidden" role="alert">
+	  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  	Great, we'll let you know when you've found your photobomb.
+	  </div>
+	  <div id="error-location" class="alert alert-danger alert-dismissible hidden" role="alert">
+	  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  	Could not get location
+	  </div>
+	<% end %>
+
 <br>
 
 <div class="zero-results hidden">
@@ -6,7 +26,8 @@
 		<span class="glyphicon glyphicon-picture"></span>	
 	</div>
 </div>
-<h1 class="h4">Recently Found Photobombs</h1>
+
+<h1 class="h4">Recently Found Photobombs</h1>               
 
 <% 2.times { %>
 	<%= render partial: 'partials/photo' %>

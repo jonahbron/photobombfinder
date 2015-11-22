@@ -49,7 +49,7 @@
  }
 
  .zero-results {
- 	margin-top: 50px;
+ 	margin-top: 130px;
  }
 
  .zero-results-icon {
@@ -68,7 +68,7 @@
 
  .navbar-toggle {
  	padding: 6px 12px;
- 	
+
  	.glyphicon {
  		top: 4px;
  	}
@@ -78,15 +78,10 @@
  	background-color: $brand-danger;
  }
 
- // .navbar-brand {
- // 	font-weight: 900;
- // }
-
- // .navbar-default {
- // 	background-color: $brand-success;
- // 	.navbar-brand {
- // 		color: white;
- // 	}
- // }
+ .progress {
+ 	margin-bottom: 0;
+ 	height: 12.5px;
+ 	border-radius: 0;
+ }
 
 
