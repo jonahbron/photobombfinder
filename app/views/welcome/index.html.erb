@@ -5,9 +5,9 @@
 	  	<strong>Getting location...</strong>
 	  </p>
 
-	 	<%= f.input :latitude, as: :hidden %>
-	  <%= f.input :longitude, as: :hidden %>
-	  <%= f.input :accuracy, as: :hidden %>
+	 	<%= f.hidden_field :latitude %>
+	  <%= f.hidden_field :longitude %>
+	  <%= f.hidden_field :accuracy %>
 
 	  <div class="alert alert-success alert-dismissible hidden" role="alert">
 	  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
