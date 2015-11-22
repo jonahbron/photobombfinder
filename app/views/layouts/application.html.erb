@@ -28,7 +28,7 @@
 				<% end %>
 				<%= link_to root_url, class: 'navbar-brand' do %><%= image_tag("photobombfinder", width: "194") %><% end %>
 
-				<%- if !user_signed_in? && controller_name != 'registrations' %>
+				<%- if !user_signed_in? && controller_name != 'registrations' && controller_name != 'photos' %>
 					<%= link_to "Sign up", new_user_registration_path, class: "btn btn-danger navbar-btn pull-right" %>
 				<% end -%>
 

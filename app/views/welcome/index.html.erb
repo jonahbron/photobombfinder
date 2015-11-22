@@ -8,18 +8,16 @@
 	 	<%= f.hidden_field :latitude %>
 	  <%= f.hidden_field :longitude %>
 	  <%= f.hidden_field :accuracy %>
-	  
-	  <div class="alert alert-success alert-dismissible hidden" role="alert">
+
+	  <div class="alert alert-success alert-dismissible" role="alert" style="margin-top: 15px">
 	  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	  	Great, we'll let you know when you've found your photobomb.
 	  </div>
-	  <div id="error-location" class="alert alert-danger alert-dismissible hidden" role="alert">
+	  <div id="error-location" class="alert alert-danger alert-dismissible hidden" role="alert" style="margin-top: 15px">
 	  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	  	Could not get location
 	  </div>
 	<% end %>
-
-<br>
 
 <% if @matches.size == 0 %>
 	<div class="zero-results">
@@ -29,8 +27,7 @@
 		</div>
 	</div>
 <% else %>
-	<h1 class="h4">Recently Found Photobombs</h1>               
-
+	<h1 class="h4">Your Photobombs</h1>               
 	<% @matches.each do |match| %>
 		<%= render partial: 'partials/photo', locals: { match: match } %>
 	<% end %>
