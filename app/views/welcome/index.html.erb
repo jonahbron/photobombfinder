@@ -29,9 +29,9 @@
 
 <h1 class="h4">Recently Found Photobombs</h1>               
 
-<% 2.times { %>
+<% @photos.each do |photo| %>
 	<%= render partial: 'partials/photo' %>
-<% } %>
+<% end %>
 
 <h1 class="h4">Older Photobombs</h1>
 

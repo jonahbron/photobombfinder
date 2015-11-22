@@ -1,5 +1,7 @@
 require 'exifr'
 
+MARGIN = 0.002700003
+
 class PhotosController < InheritedResources::Base
 
   actions :new, :create, :show
@@ -8,20 +10,14 @@ class PhotosController < InheritedResources::Base
     @photo = Photo.new(photo_params)
     @photo.save!
     exifr = EXIFR::JPEG.new(@photo.photo.path)
-    latitude = exifr.gps.latitude
-    longitude = exifr.gps.longitude
-    min_latitude = latitude - 0.002700003
-    max_latitude = latitude + 0.002700003
-    min_longitude = longitude - 0.002700003
-    max_longitude = longitude + 0.002700003
     Bomb.where(
       'latitude > ? AND latitude < ? AND longitude > ? AND longitude < ?',
-      min_latitude,
-      max_latitude,
-      min_longitude,
-      max_longitude
+      exifr.gps.latitude - MARGIN,
+      exifr.gps.latitude + MARGIN,
+      exifr.gps.longitude - MARGIN,
+      exifr.gps.longitude + MARGIN
     ).each do |bomb|
-      puts bomb
+      Match.create bomb_id: bomb.id, photo_id: @photo.id
     end
     redirect_to root_url
   end
