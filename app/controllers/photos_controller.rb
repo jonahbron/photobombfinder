@@ -9,7 +9,7 @@ class PhotosController < InheritedResources::Base
   def create
     @photo = Photo.new(photo_params)
     @photo.save!
-    exifr = EXIFR::JPEG.new(@photo.photo.path)
+    exifr = EXIFR::JPEG.new(photo_params['photo'].tempfile.path)
     Bomb.where(
       'latitude > ? AND latitude < ? AND longitude > ? AND longitude < ?',
       exifr.gps.latitude - MARGIN,

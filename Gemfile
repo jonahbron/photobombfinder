@@ -26,7 +26,7 @@ gem 'inherited_resources'
 
 gem 'carrierwave'
 
-gem 'fog-aws'
+gem 'fog'
 
 gem 'exifr'
 
