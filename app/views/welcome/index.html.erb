@@ -1,5 +1,11 @@
 <br>
-<h1 class="h4">Your Photobombs</h1>
+<h1 class="h4">Recently Found Photobombs</h1>
+
+<% 2.times { %>
+	<%= render partial: 'partials/photo' %>
+<% } %>
+
+<h1 class="h4">Older Photobombs</h1>
 
 <% 6.times { %>
 	<%= render partial: 'partials/photo' %>
