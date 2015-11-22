@@ -1,9 +1,9 @@
 <div class="photo-wrapper">
 	<div class="photo">
-		<%= image_tag photo.photo_url %>
+		<%= image_tag match.photo.photo_url %>
 	</div>
 	<div class="photo-details">
 		<span class="glyphicon glyphicon-map-marker"></span> Location @ Time
-		<span class="pull-right small"><a href="#" class="delete-this-photo">That's not me</a></span>
+		<span class="pull-right small"><%= link_to match_path(match.id), method: :delete, class: 'delete-this-photo' do %>That's not me<% end %></span>
 	</div>
 </div>
