@@ -9,12 +9,10 @@ class PhotosController < InheritedResources::Base
   def create
     exifr = EXIFR::JPEG.new(photo_params['photo'].tempfile.path)
     @photo = Photo.new(photo_params)
-    @photo.taken_at = exifr.date_time_digitized.to_datetime.utc
-    puts exifr.date_time_digitized
-    puts exifr.date_time_digitized.to_datetime
-    puts @photo.taken_at
     @photo.latitude = exifr.gps.latitude
     @photo.longitude = exifr.gps.longitude
+    timezone = Timezone::Zone.new latlon: [@photo.latitude, @photo.longitude]
+    @photo.taken_at = exifr.date_time_digitized.to_datetime - timezone.utc_offset.seconds
     @photo.save!
     Bomb.where(
       'latitude > ? AND latitude < ? AND longitude > ? AND longitude < ? AND taken_at > ? AND taken_at < ?',

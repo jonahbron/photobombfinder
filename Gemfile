@@ -64,6 +64,8 @@ gem 'therubyracer', :platform=>:ruby
 gem 'unicorn'
 gem 'unicorn-rails'
 
+gem 'timezone'
+
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
