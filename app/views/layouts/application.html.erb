@@ -26,7 +26,7 @@
 					<span class="badge">4</span>
 				</button>
 				<% end %>
-				<a class="navbar-brand" href="#"><%= image_tag("photobombfinder", width: "194") %></a>
+				<%= link_to root_url, class: 'navbar-brand' do %><%= image_tag("photobombfinder", width: "194") %><% end %>
 
 				<%- if !user_signed_in? && controller_name != 'registrations' %>
 					<%= link_to "Sign up", new_user_registration_path, class: "btn btn-danger navbar-btn pull-right" %>
