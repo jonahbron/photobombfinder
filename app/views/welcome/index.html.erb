@@ -20,15 +20,18 @@
 
 <br>
 
-<div class="zero-results hidden">
-	<p class="lead text-center">No photobombs yet!</p>
-	<div class="zero-results-icon center-block">
-		<span class="glyphicon glyphicon-picture"></span>	
+<% if @matches.size == 0 %>
+	<div class="zero-results">
+		<p class="lead text-center">No photobombs yet!</p>
+		<div class="zero-results-icon center-block">
+			<span class="glyphicon glyphicon-picture"></span>	
+		</div>
 	</div>
-</div>
+<% else %>
+	<h1 class="h4">Recently Found Photobombs</h1>               
 
-<h1 class="h4">Recently Found Photobombs</h1>               
-
-<% @photos.each do |photo| %>
-	<%= render partial: 'partials/photo', locals: { photo: photo } %>
+	<% @matches.each do |match| %>
+		<%= render partial: 'partials/photo', locals: { match: match } %>
+	<% end %>
 <% end %>
+

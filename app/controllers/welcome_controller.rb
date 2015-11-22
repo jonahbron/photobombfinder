@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
 	def index
-		@photos = current_user.photos
+		@matches = current_user.matches
 	end
 
 end
