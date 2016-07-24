@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :matches, only: [:destroy]
   resources :bombs
 
+  get '/.well-known/acme-challenge/:id' => 'welcome#letsencrypt'
+
   # Example of regular route:
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

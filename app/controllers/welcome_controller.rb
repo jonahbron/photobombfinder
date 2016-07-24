@@ -11,4 +11,8 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def letsencrypt
+    render text: '_dOCGLyz1ehBMLF8duhIcl9K6TrC9Q-z4AGvdVF55Gw.nujV0U5EgywTyj_uitKUHqL3UfYg4L7ec_3STruxmDs'
+  end
+
 end
